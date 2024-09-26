@@ -1,0 +1,740 @@
+﻿@model ViewmMODeElMASTER
+@{
+	ViewData["Title"] = ResourceWebAr.LBMyProjectInformation;
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminAr.cshtml";
+}
+
+<div class="page-wrapper">
+	<div class="content">
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row align-items-center">
+						<div class="col-4">
+							<h4 class="page-title">Projects<span class="count-title">123</span></h4>
+						</div>
+						<div class="col-8 text-end">
+							<div class="head-icons">
+								<a href="projects.html" data-bs-toggle="tooltip" data-bs-placement="top"
+								   data-bs-original-title="Refresh">
+									<i class="ti ti-refresh-dot"></i>
+								</a>
+								<a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
+								   data-bs-original-title="Collapse" id="collapse-header">
+									<i class="ti ti-chevrons-up"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Page Header -->
+				<div class="card">
+					<div class="card-header">
+						<!-- Search -->
+						<div class="row align-items-center">
+							<div class="col-sm-8">
+								<div class="d-flex align-items-center flex-wrap row-gap-2 justify-content-sm-end">
+									<div class="dropdown me-2">
+										<a href="javascript:void(0);" class="dropdown-toggle"
+										   data-bs-toggle="dropdown">
+											<i class="ti ti-package-export me-2"></i>Export
+										</a>
+										<div class="dropdown-menu  dropdown-menu-end">
+											<ul>
+												<li>
+													<a href="javascript:void(0);" class="dropdown-item">
+														<i class="ti ti-file-type-pdf text-danger me-1"></i>Export
+														as PDF
+													</a>
+												</li>
+												<li>
+													<a href="javascript:void(0);" class="dropdown-item">
+														<i class="ti ti-file-type-xls text-green me-1"></i>Export
+														as Excel
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<a href="javascript:void(0);" class="btn btn-primary"
+									   data-bs-toggle="offcanvas" data-bs-target="#offcanvas_add">
+										<i class="ti ti-square-rounded-plus me-2"></i>Add New Project
+									</a>
+								</div>
+							</div>
+						</div>
+						<!-- /Search -->
+					</div>
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title mb-0"> @ResourceWebAr.LBMyProjectInformation</h4>
+							</div>
+							<div class="card-body">
+								<div id="basic-pills-wizard" class="twitter-bs-wizard">
+									<ul class="nav nav-tabs twitter-bs-wizard-nav">
+										<li class="nav-item">
+											<a href="javascript:void(0);" class="nav-link border-0" data-bs-toggle="tab"
+											   data-bs-target="#bbbb">
+												<div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+													 title="@ResourceWebAr.LbInformaitionAr">
+													<i class="far fa-edit"></i>
+												</div>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a href="javascript:void(0);" class="nav-link border-0" data-bs-toggle="tab"
+											   data-bs-target="#company-document">
+												<div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+													 title="@ResourceWebAr.LbInformaitionEn">
+													<i class="fas fas fa-tasks"></i>
+												</div>
+											</a>
+										</li>
+
+
+										<li class="nav-item">
+											<a href="javascript:void(0);" class="nav-link border-0" data-bs-toggle="tab"
+											   data-bs-target="#bank-detail">
+												<div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+													 title="@ResourceWebAr.LbOpration">
+													<i class="fas fa-cog"></i>
+												</div>
+											</a>
+										</li>
+									</ul>
+									<!-- wizard-nav -->
+
+									<div class="tab-content twitter-bs-wizard-tab-content">
+										<div class="tab-pane show active" id="bbbb">
+											<div class="mb-4">
+												<h5>@ResourceWebAr.LbInformaitionAr</h5>
+											</div>
+											<div class="table-responsive">
+												<table class="table table-bordered mb-0 " id="example">
+													<thead>
+														<tr>
+															<th>@ResourceWebAr.LbId</th>
+															<th>@ResourceWebAr.LbProjectTypeAr</th>
+															<th>@ResourceWebAr.LbProjectNameAr</th>
+															<th>@ResourceWebAr.LbProjectDescriptionAr</th>
+															<th>@ResourceWebAr.LbProjectStart</th>
+															<th>@ResourceWebAr.LbProjectEnd</th>
+														</tr>
+													</thead>
+													<tbody>
+														@foreach (var item in Model.ListViewProjectInformation)
+														{
+															<tr>
+																<td>@item.IdProjectInformation</td>
+																<td class="truncate-50">@item.ProjectTypesAr</td>
+																<td class="truncate-50">@item.ProjectNameAr</td>
+																<td class="truncate-50">@item.ProjectDescriptionAr</td>
+																<td class="truncate-50">@item.ProjectStart</td>
+																<td class="truncate-50">@item.ProjectEnd</td>
+
+															</tr>
+														}
+
+
+													</tbody>
+												</table>
+											</div>
+											<ul class="pager wizard twitter-bs-wizard-pager-link">
+												<li class="next">
+													<a href="javascript: void(0);"
+													   class="btn btn-primary">
+														Next <i class="bx bx-chevron-right ms-1"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<!-- tab pane -->
+										<div class="tab-pane fade" id="company-document">
+											<div>
+												<div class="mb-4">
+													<h5>@ResourceWebAr.LbInformaitionEn</h5>
+												</div>
+												<div class="table-responsive">
+													<table class="table table-bordered mb-0 " id="example2">
+														<thead>
+															<tr>
+																<th>@ResourceWebAr.LbId</th>
+																<th>@ResourceWebAr.LbProjectType</th>
+																<th>@ResourceWebAr.LbProjectNameEn</th>
+																<th>@ResourceWebAr.LbProjectDescriptionEn</th>
+																<th>@ResourceWebAr.LbProjectStart</th>
+																<th>@ResourceWebAr.LbProjectEnd</th>
+															</tr>
+														</thead>
+														<tbody>
+															@foreach (var item in Model.ListViewProjectInformation)
+															{
+																<tr>
+																	<td>@item.IdProjectInformation</td>
+																	<td class="truncate-50">@item.ProjectTypes</td>
+																	<td class="truncate-50">@item.ProjectName</td>
+																	<td class="truncate-50">@item.ProjectDescription</td>
+																	<td class="truncate-50">@item.ProjectStart</td>
+																	<td class="truncate-50">@item.ProjectEnd</td>
+
+																</tr>
+															}
+
+
+														</tbody>
+													</table>
+												</div>
+												<ul class="pager wizard twitter-bs-wizard-pager-link">
+													<li class="previous">
+														<a href="javascript: void(0);"
+														   class="btn btn-primary" onclick="nextTab()">
+															<i class="bx bx-chevron-left me-1"></i> Previous
+														</a>
+													</li>
+													<li class="next">
+														<a href="javascript: void(0);"
+														   class="btn btn-primary">
+															Next <i class="bx bx-chevron-right ms-1"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- tab pane -->
+										<div class="tab-pane fade" id="bank-detail">
+											<div>
+												<div class="mb-4">
+													<h5>@ResourceWebAr.LbOpration</h5>
+												</div>
+												<div class="table-responsive">
+													<table class="table table-bordered mb-0 " id="example3">
+														<thead>
+															<tr>
+																<th rowspan="1" colspan="1">@ResourceWebAr.LbId</th>
+																<th rowspan="1" colspan="1">@ResourceWebAr.LbProjectNameEn</th>
+																<th rowspan="1" colspan="1">@ResourceWebAr.LbDataEntry</th>
+																<th rowspan="1" colspan="1">@ResourceWebAr.LbDateTimeEntry</th>
+																<th rowspan="1" colspan="1">@ResourceWebAr.lbCurrentState</th>
+																<th rowspan="1" colspan="1">@ResourceWebAr.LbOpration</th>
+															</tr>
+														</thead>
+														<tbody>
+															@foreach (var item in Model.ListViewProjectInformation)
+															{
+																<tr>
+																	<td>@item.IdProjectInformation</td>
+																	<td>@item.ProjectName</td>
+																	<td>@item.DataEntry</td>
+																	<td>@item.DateTimeEntry</td>
+																	<td>
+																		<div class="form-check form-check-lg form-switch">
+																			<input class="form-check-input" type="checkbox" role="switch" id="switch-lg" checked="@item.CurrentState" disabled>
+																			<label class="form-check-label" for="switch-lg">@item.CurrentState</label>
+																		</div>
+																	</td>
+																	<td>
+																		<div class="hstack gap-2 fs-15">
+																			<a asp-area="Admin" asp-controller="ProjectInformation" asp-action="AddProjectInformation" asp-route-IdProjectInformation="@item.IdProjectInformation" class="btn btn-icon btn-outline-success rounded-pill">
+																				<i class="fas fa fa-edit"></i>
+																			</a>
+																			<a asp-area="Admin" asp-controller="ProjectInformation" asp-action="AddEditRolesUser" asp-route-IdProjectInformation="@item.IdProjectInformation" class="btn btn-icon btn-outline-info rounded-pill">
+																				<i class="fas fa fa-cogs"></i>
+																			</a>
+																			<a asp-area="Admin" asp-controller="ProjectInformation" asp-action="ChangePassword" asp-route-IdProjectInformation="@item.IdProjectInformation" class="btn btn-icon btn-outline-secondary rounded-pill">
+																				<i class="fas fa fa-unlock-alt"></i>
+																			</a>
+																			<a asp-area="Admin" asp-controller="ProjectInformation" asp-action="DeleteData" asp-route-IdProjectInformation="@item.IdProjectInformation" class="btn btn-icon btn-outline-danger rounded-pill">
+																				<i class="fas fa fa-trash"></i>
+																			</a>
+
+																		</div>
+																	</td>
+																</tr>
+															}
+														</tbody>
+													</table>
+												</div>
+												<ul class="pager wizard twitter-bs-wizard-pager-link">
+													<li class="previous">
+														<a href="javascript: void(0);"
+														   class="btn btn-primary" onclick="nextTab()">
+															<i class="bx bx-chevron-left me-1"></i> Previous
+														</a>
+													</li>
+													<li class="float-end">
+														<a href="javascript: void(0);"
+														   class="btn btn-primary">
+															Save
+															Changes
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- tab pane -->
+									</div>
+
+									<!-- end tab content -->
+								</div>
+							</div>
+							<!-- end card body -->
+						</div>
+					</div>
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<div class="datatable-length"></div>
+						</div>
+						<div class="col-md-6">
+							<div class="datatable-paginate"></div>
+						</div>
+					</div>
+					<!-- /Projects List -->
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<!-- /Page Wrapper -->
+<!-- Add New Project -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_add">
+	<div class="offcanvas-header border-bottom">
+		<h4>Add New Project</h4>
+		<button type="button"
+				class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+				data-bs-dismiss="offcanvas" aria-label="Close">
+			<i class="ti ti-x"></i>
+		</button>
+	</div>
+	<div class="offcanvas-body">
+		<form action="projects.html">
+			<div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mb-3">
+							<label class="col-form-label">Name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Project ID<span class="text-danger"> *</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Project Type <span class="text-danger">*</span>
+							</label>
+							<select class="select2">
+								<option>Choose</option>
+								<option>Mobile App</option>
+								<option>Meeting</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Client <span class="text-danger">*</span></label>
+							<select class="select">
+								<option>Select</option>
+								<option>NovaWave LLC</option>
+								<option>Silver Hawk</option>
+								<option>Harbor View</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Category <span class="text-danger">*</span></label>
+							<select class="select">
+								<option>Select</option>
+								<option>Harbor View</option>
+								<option>LLC</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Project Timing <span class="text-danger">*</span>
+							</label>
+							<select class="select">
+								<option>Select</option>
+								<option>Hourly</option>
+								<option>Weekly</option>
+								<option>Monthly</option>
+								<option>Less than 1 Month</option>
+								<option>Less than 3 months</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Price <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Amount <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Total <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Responsible Persons <span class="text-danger">*</span>
+							</label>
+							<select class="multiple-img" multiple="multiple">
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-19.jpg" selected>
+									Darlee Robertson
+								</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-20.jpg">Sharon Roy</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-21.jpg">Vaughan</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-23.jpg">Jessica</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-16.jpg">Carol Thomas</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Team Leader <span class="text-danger">*</span></label>
+							<select class="multiple-img" multiple="multiple">
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-19.jpg">Darlee Robertson</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-20.jpg" selected>
+									Sharon Roy
+								</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-21.jpg">Vaughan</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-23.jpg">Jessica</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-16.jpg">Carol Thomas</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Start Date <span class="text-danger">*</span></label>
+							<div class="icon-form">
+								<span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+								<input type="text" class="form-control datetimepicker" value="29-02-2020">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Due Date <span class="text-danger">*</span></label>
+							<div class="icon-form">
+								<span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+								<input type="text" class="form-control datetimepicker" value="29-02-2020">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Priority</label>
+							<select class="select">
+								<option>Select</option>
+								<option>High</option>
+								<option>Low</option>
+								<option>Medium</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Status</label>
+							<select class="select">
+								<option>Select</option>
+								<option>Active</option>
+								<option>Inactive</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="mb-3">
+							<label class="col-form-label">Description <span class="text-danger">*</span></label>
+							<textarea class="form-control" rows="4"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex align-items-center justify-content-end">
+				<button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+						data-bs-target="#create_project">
+					Create
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- /Add New Project -->
+<!-- Edit Project -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_edit">
+	<div class="offcanvas-header border-bottom">
+		<h4>Edit Project</h4>
+		<button type="button"
+				class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+				data-bs-dismiss="offcanvas" aria-label="Close">
+			<i class="ti ti-x"></i>
+		</button>
+	</div>
+	<div class="offcanvas-body">
+		<form action="projects.html">
+			<div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="mb-3">
+							<label class="col-form-label">Name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Project ID<span class="text-danger"> *</span></label>
+							<input class="form-control" type="text" value="12">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Project Type <span class="text-danger">*</span>
+							</label>
+							<select class="select2">
+								<option>Choose</option>
+								<option>Mobile App</option>
+								<option selected>Meeting</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Client <span class="text-danger">*</span></label>
+							<select class="select">
+								<option>Select</option>
+								<option selected>NovaWave LLC</option>
+								<option>Silver Hawk</option>
+								<option>Harbor View</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Category <span class="text-danger">*</span></label>
+							<select class="select">
+								<option>Select</option>
+								<option selected>Harbor View</option>
+								<option>LLC</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Project Timing <span class="text-danger">*</span>
+							</label>
+							<select class="select">
+								<option>Select</option>
+								<option selected>Hourly</option>
+								<option>Weekly</option>
+								<option>Monthly</option>
+								<option>Less than 1 Month</option>
+								<option>Less than 3 months</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Price <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Amount <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Total <span class="text-danger">*</span></label>
+							<input class="form-control" type="text">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">
+								Responsible Persons <span class="text-danger">*</span>
+							</label>
+							<select class="multiple-img" multiple="multiple">
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-19.jpg" selected>
+									Darlee Robertson
+								</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-20.jpg">Sharon Roy</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-21.jpg">Vaughan</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-23.jpg">Jessica</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-16.jpg">Carol Thomas</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Team Leader <span class="text-danger">*</span></label>
+							<select class="multiple-img" multiple="multiple">
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-19.jpg">Darlee Robertson</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-20.jpg" selected>
+									Sharon Roy
+								</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-21.jpg">Vaughan</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-23.jpg">Jessica</option>
+								<option data-image="~/AdminEn/assets/img/profiles/avatar-16.jpg">Carol Thomas</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Start Date <span class="text-danger">*</span></label>
+							<div class="icon-form">
+								<span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+								<input type="text" class="form-control datetimepicker" value="29-02-2020">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Due Date <span class="text-danger">*</span></label>
+							<div class="icon-form">
+								<span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+								<input type="text" class="form-control datetimepicker" value="29-02-2020">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Priority</label>
+							<select class="select">
+								<option>Select</option>
+								<option selected>High</option>
+								<option>Low</option>
+								<option>Medium</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label class="col-form-label">Status</label>
+							<select class="select">
+								<option>Select</option>
+								<option selected>Active</option>
+								<option>Inactive</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="mb-3">
+							<label class="col-form-label">Description <span class="text-danger">*</span></label>
+							<textarea class="form-control" rows="4"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex align-items-center justify-content-end">
+				<button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+				<button type="button" class="btn btn-primary">Save Changes</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- /Edit Project -->
+<!-- Delete Project -->
+<div class="modal fade" id="delete_project" role="dialog">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="text-center">
+					<div class="avatar avatar-xl bg-danger-light rounded-circle mb-3">
+						<i class="ti ti-trash-x fs-36 text-danger"></i>
+					</div>
+					<h4 class="mb-2">Remove Project?</h4>
+					<p class="mb-0">Are you sure you want to remove <br> project you selected.</p>
+					<div class="d-flex align-items-center justify-content-center mt-4">
+						<a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+						<a href="projects.html" class="btn btn-danger">Yes, Delete it</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Project -->
+<!-- Create Project -->
+<div class="modal custom-modal fade" id="create_project" role="dialog">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header border-0 m-0 justify-content-end">
+				<button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="success-message text-center">
+					<div class="success-popup-icon bg-light-blue">
+						<i class="ti ti-atom-2"></i>
+					</div>
+					<h3>Project Created Successfully!!!</h3>
+					<p>View the details of project, created</p>
+					<div class="col-lg-12 text-center modal-btn">
+						<a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+						<a href="project-details.html" class="btn btn-primary">View Details</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Create Project -->
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="save_view" role="dialog">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Add New View</h5>
+				<button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<i class="ti ti-x"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="projects.html">
+					<div class="mb-3">
+						<label class="col-form-label">View Name</label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="modal-btn text-end">
+						<a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+						<button type="submit" class="btn btn-danger">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Add New View -->
+@section Scripts
+  {
+
+}
+
